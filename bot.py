@@ -1,19 +1,37 @@
 import os
 import requests
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 
+now = datetime.now(ZoneInfo("Europe/Kiev"))
+hour = now.hour
+
+if hour == 8:
+    question = "Привет, будешь на вечернем Прайме?"
+    options = ["Да буду в 20:00", "Да буду в 21:00", "Да буду в 22:00", "Не уверен", "Нет"]
+
+elif hour == 19:
+    question = "Привет, будешь на утреннем Прайме?"
+    options = ["Да буду в 10:00", "Да буду в 11:00", "Да буду в 12:00", "Не уверен", "Нет"]
+
+else:
+    print("Не время для опроса")
+    exit()
+
 url = f"https://api.telegram.org/bot{TOKEN}/sendPoll"
 
-response = requests.post(
+requests.post(
     url,
     json={
         "chat_id": CHAT_ID,
-        "question": "Тестовый опрос",
-        "options": ["Да", "Нет", "Возможно"],
-        "is_anonymous": False
+        "question": question,
+        "options": options,
+        "is_anonymous": False,
+        "allows_multiple_answers": False
     }
 )
 
-print(response.text)
+print("Опрос отправлен")
