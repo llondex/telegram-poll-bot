@@ -6,7 +6,7 @@ from zoneinfo import ZoneInfo
 TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 
-now = datetime.now(ZoneInfo("Europe/Kiev"))
+now = datetime.now(ZoneInfo("Europe/Kyiv"))
 hour = now.hour
 
 print("Current Kyiv time:", now)
