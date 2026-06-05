@@ -9,6 +9,9 @@ CHAT_ID = os.getenv("CHAT_ID")
 now = datetime.now(ZoneInfo("Europe/Kiev"))
 hour = now.hour
 
+print("Current Kyiv time:", now)
+print("Hour:", hour)
+
 if hour == 8:
     question = "Привет, будешь на вечернем Прайме?"
     options = ["Да буду в 20:00", "Да буду в 21:00", "Да буду в 22:00", "Не уверен", "Нет"]
