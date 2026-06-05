@@ -26,7 +26,7 @@ else:
 
 url = f"https://api.telegram.org/bot{TOKEN}/sendPoll"
 
-requests.post(
+response = requests.post(
     url,
     json={
         "chat_id": CHAT_ID,
@@ -37,4 +37,4 @@ requests.post(
     }
 )
 
-print("Опрос отправлен")
+print(response.text)
