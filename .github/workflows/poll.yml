@@ -2,8 +2,8 @@ name: Telegram Polls
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
-
+  - cron: '0 5 * * *'
+  - cron: '0 16 * * *'
 
   workflow_dispatch:
 
